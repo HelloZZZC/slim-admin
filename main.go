@@ -1,17 +1,16 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
+	"slim-admin/router"
 )
 
 func main() {
 	r := gin.Default()
-
-	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "hello World!")
-	})
-
-	r.Run()
+	router.Register(r)
+	err := endless.ListenAndServe(":8080", r)
+	if err != nil {
+		panic(err)
+	}
 }
