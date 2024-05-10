@@ -1,7 +1,7 @@
 <h1 align="center"></h1><div align="center">
 
 ![Static Badge](https://img.shields.io/badge/Language-golang-blue)
-![Static Badge](https://img.shields.io/badge/Framework-gin)
+![Static Badge](https://img.shields.io/badge/Framework-gin-green)
 
 ## SlimAdmin
 
