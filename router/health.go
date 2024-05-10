@@ -6,9 +6,9 @@ import (
 )
 
 type HealthRouter struct {
-	engine *gin.Engine
+	Engine *gin.Engine
 }
 
 func (hr HealthRouter) register() {
-	hr.engine.GET("/health", api.Health)
+	hr.Engine.GET("/health", api.Health)
 }
