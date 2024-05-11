@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
+	"slim-admin/kernal"
 	"slim-admin/router"
 )
 
@@ -17,7 +18,13 @@ func main() {
 
 	r := gin.Default()
 	router.Register(r)
-	err := endless.ListenAndServe(":8080", r)
+	kernal.Viper()
+	var port int
+	if port = kernal.ApplicationConfig.Server.Port; port == 0 {
+		port = 8080
+	}
+	addr := fmt.Sprintf(":%d", port)
+	err := endless.ListenAndServe(addr, r)
 	if err != nil {
 		panic(err)
 	}

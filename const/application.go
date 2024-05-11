@@ -1,5 +1,5 @@
 package _const
 
 const (
-	DefaultConfigFile = "../application.yml"
+	DefaultConfigFile = "application.yml"
 )

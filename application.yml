@@ -2,11 +2,13 @@ server:
   port: 8080
 
 mysql:
-  host: 127.0.0.1
-  port: 3306
-  database: "slim_admin"
+  url: tcp(127.0.0.1:3306)/slim-admin?charset=utf8mb4&parseTime=True&loc=Local
   username: root
   password:
+  connection-pool:
+    max-idle-conns: 20
+    max-open-conns: 20
+    conn-max-life-time-seconds: 3600
 
 redis:
   host: 127.0.0.1
