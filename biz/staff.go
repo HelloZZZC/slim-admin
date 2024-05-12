@@ -1,13 +1,14 @@
 package biz
 
-import "slim-admin/model"
+import (
+	"slim-admin/model"
+	"slim-admin/repository"
+)
 
-type StaffService interface {
-	getStaff(id uint) *model.StaffModel
+type StaffService struct {
+	repository *repository.StaffRepository
 }
 
-type StaffServiceImpl struct{}
-
-func (impl *StaffServiceImpl) getStaff(id uint) *model.StaffModel {
-	return nil
+func (s *StaffService) GetStaff(id uint) *model.StaffModel {
+	return s.repository.Get(id)
 }

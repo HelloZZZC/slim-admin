@@ -10,5 +10,5 @@ type HealthRouter struct {
 }
 
 func (hr HealthRouter) register() {
-	hr.Engine.GET("/health", api.Health)
+	hr.Engine.GET("/health", new(api.HealthController).Health)
 }

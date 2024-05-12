@@ -6,6 +6,8 @@ import (
 	"slim-admin/util"
 )
 
-func Health(c *gin.Context) {
-	c.JSON(http.StatusOK, new(util.Response).Success("Slim Admin"))
+type HealthController struct{}
+
+func (c *HealthController) Health(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, new(util.Response).Success("Slim Admin"))
 }
