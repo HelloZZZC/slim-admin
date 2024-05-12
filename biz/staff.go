@@ -8,6 +8,6 @@ type StaffService interface {
 
 type StaffServiceImpl struct{}
 
-func (impl StaffServiceImpl) getStaff(id uint) *model.StaffModel {
+func (impl *StaffServiceImpl) getStaff(id uint) *model.StaffModel {
 	return nil
 }
