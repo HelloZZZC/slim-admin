@@ -7,13 +7,12 @@ import (
 	"github.com/spf13/viper"
 	"path"
 	"runtime"
-	"slim-admin/config"
 	_const "slim-admin/const"
+	"slim-admin/global"
 )
 
-var ApplicationConfig config.Application
-
-func Viper(path ...string) *viper.Viper {
+// LoadConfigYaml 载入yaml配置文件
+func loadConfigYaml(path ...string) {
 	var configFile string
 	if len(path) > 0 {
 		configFile = path[0]
@@ -21,28 +20,26 @@ func Viper(path ...string) *viper.Viper {
 		configFile = readConfigFileFromCMD()
 	}
 
-	v := viper.New()
-	v.SetConfigFile(configFile)
-	v.SetConfigType("yaml")
+	global.Viper = viper.New()
+	global.Viper.SetConfigFile(configFile)
+	global.Viper.SetConfigType("yaml")
 
-	if err := v.ReadInConfig(); err != nil {
+	if err := global.Viper.ReadInConfig(); err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
 
-	v.WatchConfig()
+	global.Viper.WatchConfig()
 
-	v.OnConfigChange(func(e fsnotify.Event) {
+	global.Viper.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Println("config file changed:", e.Name)
-		if err := v.Unmarshal(&ApplicationConfig); err != nil {
+		if err := global.Viper.Unmarshal(&global.ApplicationConfig); err != nil {
 			fmt.Println(err)
 		}
 	})
 
-	if err := v.Unmarshal(&ApplicationConfig); err != nil {
+	if err := global.Viper.Unmarshal(&global.ApplicationConfig); err != nil {
 		panic(err)
 	}
-
-	return v
 }
 
 func readConfigFileFromCMD() (configFile string) {

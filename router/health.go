@@ -2,13 +2,13 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"slim-admin/api"
+	"slim-admin/global"
 )
 
 type HealthRouter struct {
-	Engine *gin.Engine
+	E *gin.Engine
 }
 
-func (hr HealthRouter) register() {
-	hr.Engine.GET("/health", new(api.HealthController).Health)
+func (hr HealthRouter) Register() {
+	hr.E.GET("/health", global.Controllers.HealthController.Health)
 }

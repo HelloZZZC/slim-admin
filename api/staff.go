@@ -5,12 +5,16 @@ import (
 	"net/http"
 	"slim-admin/biz"
 	"slim-admin/util"
+	"strconv"
 )
 
 type StaffController struct {
-	service *biz.StaffService
+	Service *biz.StaffService `inject:""`
 }
 
-func (c *StaffController) getStaff(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, new(util.Response).Success(c.service.GetStaff(1)))
+// GetStaff 获取职员详情
+func (c *StaffController) GetStaff(ctx *gin.Context) {
+	idStr := ctx.Query("id")
+	id, _ := strconv.ParseUint(idStr, 10, 64)
+	ctx.JSON(http.StatusOK, new(util.Response).Success(c.Service.GetStaff(uint(id))))
 }

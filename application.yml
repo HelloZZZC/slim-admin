@@ -2,7 +2,7 @@ server:
   port: 8080
 
 mysql:
-  url: tcp(127.0.0.1:3306)/slim-admin?charset=utf8mb4&parseTime=True&loc=Local
+  url: tcp(127.0.0.1:3306)/slim_admin?charset=utf8mb4&parseTime=True&loc=Local
   username: root
   password:
   connection-pool:

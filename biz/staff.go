@@ -6,9 +6,10 @@ import (
 )
 
 type StaffService struct {
-	repository *repository.StaffRepository
+	Repository *repository.StaffRepository `inject:""`
 }
 
-func (s *StaffService) GetStaff(id uint) *model.StaffModel {
-	return s.repository.Get(id)
+// GetStaff 根据职工ID获取职工详情
+func (svc *StaffService) GetStaff(id uint) *model.Staff {
+	return svc.Repository.Get(id)
 }

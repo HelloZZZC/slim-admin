@@ -5,7 +5,7 @@ import (
 	"slim-admin/enum"
 )
 
-type StaffModel struct {
+type Staff struct {
 	gorm.Model
 	Nickname     *string `json:",omitempty"`
 	RealName     *string `json:",omitempty"`
