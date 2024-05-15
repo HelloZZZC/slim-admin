@@ -9,11 +9,7 @@ import (
 )
 
 // initializeConn 初始化数据库连接
-func initializeConn() {
-	global.GormDB = conn()
-}
-
-func conn() *gorm.DB {
+func initializeConn(ch chan *gorm.DB) {
 	dsn := fmt.Sprintf("%s:%s@%s", global.ApplicationConfig.Mysql.Username, global.ApplicationConfig.Mysql.Password,
 		global.ApplicationConfig.Mysql.Url)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
@@ -35,5 +31,5 @@ func conn() *gorm.DB {
 			ConnMaxLifeTimeSeconds))
 	}
 
-	return db
+	ch <- db
 }

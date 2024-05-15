@@ -11,6 +11,6 @@ mysql:
     conn-max-life-time-seconds: 3600
 
 redis:
-  host: 127.0.0.1
-  port: 6379
+  addr: 127.0.0.1:6379
+  password:
   db: 0
