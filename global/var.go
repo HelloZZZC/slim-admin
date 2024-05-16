@@ -1,6 +1,7 @@
 package global
 
 import (
+	"context"
 	"github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
@@ -14,4 +15,5 @@ var (
 	Viper             *viper.Viper
 	ApplicationConfig config.Application
 	RDB               *redis.Client
+	Ctx               context.Context
 )

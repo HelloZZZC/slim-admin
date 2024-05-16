@@ -1,6 +1,7 @@
 package kernal
 
 import (
+	"context"
 	"fmt"
 	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
@@ -19,7 +20,8 @@ func Bootstrap() {
 	go initializeRDB(cRedis)
 	global.GormDB = <-cMysql
 	global.RDB = <-cRedis
-
+	global.Ctx = context.Background()
+	
 	executeDI()
 	engine := gin.Default()
 	registerRoute(engine)

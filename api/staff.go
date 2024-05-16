@@ -16,5 +16,5 @@ type StaffController struct {
 func (c *StaffController) GetStaff(ctx *gin.Context) {
 	idStr := ctx.Query("id")
 	id, _ := strconv.ParseUint(idStr, 10, 64)
-	ctx.JSON(http.StatusOK, new(util.Response).Success(c.Service.GetStaff(uint(id))))
+	ctx.JSON(http.StatusOK, new(util.Response).Success(c.Service.GetStaffFromCache(uint(id))))
 }
