@@ -1,20 +1,23 @@
 package util
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"slim-admin/enum"
+)
 
 type Response struct{}
 
 func (resp *Response) Success(data any) map[string]any {
 	return gin.H{
-		"success": true,
-		"data":    data,
+		"Success": true,
+		"Data":    data,
 	}
 }
 
-func (resp *Response) Failure(errCode string, errMsg string) map[string]any {
+func (resp *Response) Failure(errCode enum.ErrorCode, errMsg string) map[string]any {
 	return gin.H{
-		"success": false,
-		"errCode": errCode,
-		"errMsg":  errMsg,
+		"Success": false,
+		"ErrCode": errCode,
+		"ErrMsg":  errMsg,
 	}
 }

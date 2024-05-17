@@ -11,6 +11,7 @@ func registerRoute(e *gin.Engine) *gin.Engine {
 	{
 		router.HealthRouter{E: e}.Register()
 		router.StaffRouter{E: e}.Register()
+		router.ExampleRouter{E: e}.Register()
 	}
 
 	return e
