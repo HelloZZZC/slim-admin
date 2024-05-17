@@ -17,6 +17,10 @@ Golang Web Admin脚手架🔥
 ---
 </div>
 
+### 介绍
+1. [脚手架目录](#脚手架目录)
+2. [TODO](#TODO)
+
 ### 脚手架目录
 ```
 .
@@ -25,10 +29,16 @@ Golang Web Admin脚手架🔥
 ├── config // 配置项
 ├── const // 定义常量
 ├── enum // 定义枚举
+├── error // 自定义业务异常
 ├── global // 全局变量定义
 ├── kernal // 应用内核
+├── middleware // 自定义中间
 ├── model // 定义模型
 ├── repository // 模型仓储
 ├── router // 定义路由
 └── util // 工具
 ```
+
+### TODO
+1. [ ] Redis分布式锁工具
+2. [ ] 单元测试
